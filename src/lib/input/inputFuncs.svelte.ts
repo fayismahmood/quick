@@ -24,32 +24,40 @@ export let inputFuncs = {
   Obj,
 };
 
-export function Text(schema: typeof TextCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator(schema);
+export function Text(props: (typeof TextCMP.prototype.$$prop_def)["props"]) {
+  let sch = new SchemaCreator({ props, value: "" });
   return { cmp: TextCMP, schema: sch.schema };
 }
-export function Password(schema: typeof PasswordCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator(schema);
+export function Password(
+  props: (typeof PasswordCMP.prototype.$$prop_def)["props"]
+) {
+  let sch = new SchemaCreator({ props, value: "" });
   return { cmp: PasswordCMP, schema: sch.schema };
 }
-export function Radio(schema: typeof RadioCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator(schema);
+export function Radio(props: (typeof RadioCMP.prototype.$$prop_def)["props"]) {
+  let sch = new SchemaCreator({ props, value: "" });
   return { cmp: RadioCMP, schema: sch.schema };
 }
-export function Select(schema: typeof SelectCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator(schema);
+export function Select(
+  props: (typeof SelectCMP.prototype.$$prop_def)["props"]
+) {
+  let sch = new SchemaCreator({ props, value: "" });
   return { cmp: SelectCMP, schema: sch.schema };
 }
-export function Switch(schema: typeof SwitchCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator(schema);
+export function Switch(
+  props: (typeof SwitchCMP.prototype.$$prop_def)["props"]
+) {
+  let sch = new SchemaCreator({ props, value: "" });
   return { cmp: SwitchCMP, schema: sch.schema };
 }
-export function Textarea(schema: typeof TextareaCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator(schema);
+export function Textarea(
+  props: (typeof TextareaCMP.prototype.$$prop_def)["props"]
+) {
+  let sch = new SchemaCreator({ props, value: "" });
   return { cmp: TextareaCMP, schema: sch.schema };
 }
 
-export function Obj(schema: typeof objFuncCMP.prototype.$$prop_def) {
-  let sch = new SchemaCreator({ ...schema, value: {} });
+export function Obj(props: (typeof objFuncCMP.prototype.$$prop_def)["props"]) {
+  let sch = new SchemaCreator({ props, value: {} });
   return { cmp: objFuncCMP, schema: sch.schema };
 }

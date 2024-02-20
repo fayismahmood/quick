@@ -8,49 +8,92 @@
     Select,
     Radio,
   } from "$lib/input/inputFuncs.svelte.js";
-  let open = $state(false);
+  import { Models } from "$lib/stores/models.svelte.js";
   let _ = Obj({
-    props: {
-      elms: {
-        a: Text({ props: { label: "qqqqqqqq" } }),
-        b: Textarea({ props: { label: "wwwwwwwwwww" } }),
-        ok: Switch({ props: { label: "wwwwwwwwwww" } }),
-        sel: Select({
-          props: {
-            label: "qqqqqqqqqqq",
-            options: [
-              { label: "k", value: "a" },
-              { label: "erk", value: "b" },
-              { label: "kwer", value: "c" },
-              { label: "kqqqqqqq", value: "d" },
-            ],
-          },
-        }),
-        rad: Radio({
-          props: {
-            label: "qqqqqqqqqqq",
-            cols: 2,
-            sty: "bordered",
-            radio: [
-              { label: "k", value: "a" },
-              { label: "erk", value: "b" },
-              { label: "kwer", value: "c" },
-              { label: "kqqqqqqq", value: "d" },
-            ],
-          },
-        }),
-      },
+    elms: {
+      a: Text({ label: "qqqqqqqq" }),
+      b: Textarea({ label: "wwwwwwwwwww" }),
+      ok: Switch({ label: "wwwwwwwwwww" }),
+      sel: Select({
+        label: "qqqqqqqqqqq",
+        options: [
+          { label: "k", value: "a" },
+          { label: "erk", value: "b" },
+          { label: "kwer", value: "c" },
+          { label: "kqqqqqqq", value: "d" },
+        ],
+      }),
+      rad: Radio({
+        label: "qqqqqqqqqqq",
+        cols: 2,
+        sty: "bordered",
+        radio: [
+          { label: "k", value: "a" },
+          { label: "erk", value: "b" },
+          { label: "kwer", value: "c" },
+          { label: "kqqqqqqq", value: "d" },
+        ],
+      }),
     },
   });
 </script>
 
-<div>
-  <Dialog bind:open header="a asdjfklasdf" cont={_} />
+<div class="p-6">
   <button
+    class="px-3 py-1 rounded-lg bg-gray-600 text-white"
     on:click={() => {
-      open = true;
+      Models.createDialog({
+        header: "asdfasdf",
+        cont: _,
+      })
+        .then((e) => {
+          console.log(e, "wwwwwwwwwwww");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }}>Click</button
   >
 
-  {JSON.stringify(_.schema.value)}
+  <button
+    class="px-3 py-1 rounded-lg bg-gray-600 text-white"
+    on:click={() => {
+      Models.createDrawer({
+        header: "asdfasdf",
+        cont: Obj({
+          elms: {
+            a: Text({ label: "qqqqqqqq" }),
+            b: Textarea({ label: "wwwwwwwwwww" }),
+            ok: Switch({ label: "wwwwwwwwwww" }),
+            sel: Select({
+              label: "qqqqqqqqqqq",
+              options: [
+                { label: "k", value: "a" },
+                { label: "erk", value: "b" },
+                { label: "kwer", value: "c" },
+                { label: "kqqqqqqq", value: "d" },
+              ],
+            }),
+            rad: Radio({
+              label: "qqqqqqqqqqq",
+              cols: 2,
+              sty: "bordered",
+              radio: [
+                { label: "k", value: "a" },
+                { label: "erk", value: "b" },
+                { label: "kwer", value: "c" },
+                { label: "kqqqqqqq", value: "d" },
+              ],
+            }),
+          },
+        }),
+      })
+        .then((e) => {
+          console.log(e, "wwwwwwwwwwww");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }}>Click</button
+  >
 </div>

@@ -21,12 +21,12 @@
   class="bg-white bg-opacity-30 backdrop-blur-sm fixed left-0 top-0 w-full h-full flex"
 >
   <div
-    transition:fly|global={{ y: 60 }}
+    transition:fly|global={{ x: 60 }}
     aria-hidden="true"
     on:click={(e) => {
       e.stopPropagation();
     }}
-    class="m-auto bg-white shadow-lg rounded-lg border overflow-hidden"
+    class="ml-auto bg-white shadow-lg border overflow-hidden"
   >
     <div class="flex w-full p-2 px-3 border-b">
       <div class="text-lg font-bold text-gray-500">
@@ -49,10 +49,12 @@
         ></button
       >
     </div>
-    <div class="p-5 grid gap-5">
-      <svelte:component this={cont.cmp} {...cont.schema} />
+    <div class="p-5 h-[calc(100vh_-_96px)] overflow-auto">
+      <div class="h-max grid gap-5">
+        <svelte:component this={cont.cmp} {...cont.schema} />
+      </div>
     </div>
-    <div class="border-t bg-gray-100 p-2 flex gap-5">
+    <div class="border-t bg-gray-100 p-2 px-4 flex gap-5 mt-auto">
       <button
         onclick={() => {
           res?.(cont.schema.value);
