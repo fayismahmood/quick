@@ -6,7 +6,10 @@
 </script>
 
 <div>
-  <span>{props?.label || ""}</span>
-  <textarea bind:value />
+  <div class="mb-1 text-gray-600">{props?.label || ""}</div>
+  <textarea
+    class="px-3 py-1 rounded outline-none focus:ring-primary-600 ring-2 ring-gray-300"
+    bind:value
+  />
 </div>
 <Msg />

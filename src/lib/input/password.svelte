@@ -6,7 +6,11 @@
 </script>
 
 <div>
-  <span>{props?.label || ""}</span>
-  <input bind:value type="password" />
+  <div class="mb-1 text-gray-600">{props?.label || ""}</div>
+  <input
+    class="px-3 py-1 rounded outline-none focus:ring-primary-600 ring-2 ring-gray-300"
+    bind:value
+    type="password"
+  />
 </div>
 <Msg />
