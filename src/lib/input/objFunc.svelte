@@ -1,6 +1,6 @@
 <script lang="ts">
   import Msg from "$lib/Msg.svelte";
-  import { inputFuncs } from "./inputFuncs.svelte.js";
+  import type { createInput } from "./createInput.svelte.js";
 
   let {
     props,
@@ -11,14 +11,11 @@
       Record<string, any>,
       {
         label?: string;
-
-        elms: Record<
-          string,
-          ReturnType<(typeof inputFuncs)[keyof typeof inputFuncs]>
-        >;
+        elms: Record<string, ReturnType<ReturnType<typeof createInput>>>;
       }
     >
   >();
+
   $effect(() => {
     if (!value) value = {};
   });

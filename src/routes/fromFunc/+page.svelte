@@ -6,7 +6,7 @@
     Switch,
     Select,
     Radio,
-  } from "$lib/input/inputFuncs.svelte.js";
+  } from "$lib/input/createInput.svelte.js";
 
   let _ = Obj({
     props: {

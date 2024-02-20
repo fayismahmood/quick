@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Obj } from "$lib/input/inputFuncs.svelte.js";
+  import { Obj } from "$lib/input/createInput.svelte.js";
   import Dialog from "$lib/modals/dialog.svelte";
   import {
     Text,
@@ -7,7 +7,7 @@
     Switch,
     Select,
     Radio,
-  } from "$lib/input/inputFuncs.svelte.js";
+  } from "$lib/input/createInput.svelte.js";
   import { Models } from "$lib/stores/models.svelte.js";
   let _ = Obj({
     elms: {

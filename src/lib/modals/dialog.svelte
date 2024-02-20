@@ -1,14 +1,22 @@
 <script lang="ts">
   import { clickOutside } from "$lib/actions/onClickOutSide.js";
-  import type { inputFuncs } from "$lib/input/inputFuncs.svelte.js";
+  import type { createInput } from "$lib/input/createInput.svelte.js";
+
   import { tick } from "svelte";
   import { fade, fly } from "svelte/transition";
 
-  let { header, close, cont, res } = $props<{
+  let {
+    header,
+    close,
+    cont,
+    res,
+    submitText = "save",
+  } = $props<{
     header: string;
     close?: () => void;
     res?: (e: any) => void;
-    cont: ReturnType<(typeof inputFuncs)[keyof typeof inputFuncs]>;
+    cont: ReturnType<ReturnType<typeof createInput>>;
+    submitText?: string;
   }>();
 </script>
 
@@ -18,7 +26,7 @@
   on:click={(e) => {
     close?.();
   }}
-  class="bg-white bg-opacity-30 backdrop-blur-sm fixed left-0 top-0 w-full h-full flex"
+  class="bg-white bg-opacity-5 backdrop-blur-sm fixed left-0 top-0 w-full h-full flex"
 >
   <div
     transition:fly|global={{ y: 60 }}
@@ -49,7 +57,7 @@
         ></button
       >
     </div>
-    <div class="p-5 grid gap-5">
+    <div class="p-5 grid gap-5 overflow-auto max-h-[70vh]">
       <svelte:component this={cont.cmp} {...cont.schema} />
     </div>
     <div class="border-t bg-gray-100 p-2 flex gap-5">
@@ -57,7 +65,8 @@
         onclick={() => {
           res?.(cont.schema.value);
         }}
-        class="px-3 py-1 rounded-lg bg-primary-600 text-white">Save</button
+        class="px-3 py-1 rounded-lg bg-primary-600 text-white"
+        >{submitText}</button
       >
     </div>
   </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { clickOutside } from "$lib/actions/onClickOutSide.js";
-  import type { inputFuncs } from "$lib/input/inputFuncs.svelte.js";
+  import type { createInput } from "$lib/input/createInput.svelte.js";
   import { tick } from "svelte";
   import { fade, fly } from "svelte/transition";
 
@@ -8,7 +8,7 @@
     header: string;
     close?: () => void;
     res?: (e: any) => void;
-    cont: ReturnType<(typeof inputFuncs)[keyof typeof inputFuncs]>;
+    cont: ReturnType<ReturnType<typeof createInput>>;
   }>();
 </script>
 
@@ -18,7 +18,7 @@
   on:click={(e) => {
     close?.();
   }}
-  class="bg-white bg-opacity-30 backdrop-blur-sm fixed left-0 top-0 w-full h-full flex"
+  class="bg-white bg-opacity-5 backdrop-blur-sm fixed left-0 top-0 w-full h-full flex"
 >
   <div
     transition:fly|global={{ x: 60 }}
