@@ -1,13 +1,14 @@
 <script lang="ts">
+  import { Obj } from "$lib/input/inputFuncs.svelte.js";
+  import Dialog from "$lib/modals/dialog.svelte";
   import {
-    Obj,
     Text,
     Textarea,
     Switch,
     Select,
     Radio,
   } from "$lib/input/inputFuncs.svelte.js";
-
+  let open = $state(false);
   let _ = Obj({
     props: {
       elms: {
@@ -43,8 +44,13 @@
   });
 </script>
 
-<h1>Text</h1>
-<div class="p-5 grid gap-4 m-5 border rounded-lg shadow">
-  <svelte:component this={_.cmp} {..._.schema} />
+<div>
+  <Dialog bind:open header="a asdjfklasdf" cont={_} />
+  <button
+    on:click={() => {
+      open = true;
+    }}>Click</button
+  >
+
+  {JSON.stringify(_.schema.value)}
 </div>
-{JSON.stringify(_.schema.value)}
