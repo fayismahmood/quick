@@ -6,9 +6,9 @@
 </script>
 
 <div>
-  <div class="mb-1 text-gray-600">{props?.label || ""}</div>
+  <div class="mb-2 text-gray-600">{props?.label || ""}</div>
   <textarea
-    class="px-3 py-1 rounded outline-none focus:ring-primary-600 ring-2 ring-gray-300"
+    class="px-3 py-1 rounded w-full outline-none focus:ring-primary-600 ring-2 ring-gray-300"
     bind:value
   />
 </div>

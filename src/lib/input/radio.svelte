@@ -20,7 +20,7 @@
 </script>
 
 <div>
-  <span>{props?.label || ""}</span>
+  <div class="mb-2 text-gray-600">{props?.label || ""}</div>
   <div
     style={`grid-template-columns:${"auto ".repeat(props?.cols || 1)}`}
     class="grid gap-2"

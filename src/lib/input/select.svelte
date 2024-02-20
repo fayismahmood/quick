@@ -25,14 +25,14 @@
     open = false;
   }}
 >
-  <div class="mb-1 text-gray-600">{props?.label || ""}</div>
-  <div class="w-max">
+  <div class="mb-2 text-gray-600">{props?.label || ""}</div>
+  <div class="w-full">
     <div
       aria-hidden="true"
       on:click={() => {
         open = true;
       }}
-      class={"px-3 cursor-pointer w-max min-w-[300px] flex gap-2 py-1 rounded outline-none focus:ring-primary-600 ring-2 ring-gray-300 text-gray-500" +
+      class={"px-3 cursor-pointer w-full flex gap-2 py-1 rounded outline-none focus:ring-primary-600 ring-2 ring-gray-300 text-gray-500" +
         (open ? " ring-primary-600" : "")}
     >
       <div>

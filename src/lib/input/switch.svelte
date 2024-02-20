@@ -12,7 +12,7 @@
 </script>
 
 <div>
-  <div class="mb-1 text-gray-600">{props?.label || ""}</div>
+  <div class="mb-2 text-gray-600">{props?.label || ""}</div>
   <div>
     <div
       aria-hidden="true"
