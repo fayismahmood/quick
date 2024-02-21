@@ -1,15 +1,23 @@
 import type Dialog from "$lib/modals/dialog.svelte";
-type DialogModel = {
+import type Toast from "$lib/modals/toast.svelte";
+export type DialogModel = {
   type: "dialog";
   key?: number;
   props: typeof Dialog.prototype.$$prop_def;
 };
-type DrawerModel = {
+export type DrawerModel = {
   type: "drawer";
   key?: number;
   props: typeof Dialog.prototype.$$prop_def;
 };
-type models = DialogModel | DrawerModel;
+export type ToastModel = {
+  type: "toast";
+  key?: number;
+  props: typeof Toast.prototype.$$prop_def;
+};
+
+type models = DialogModel | DrawerModel | ToastModel;
+
 class ModelStore {
   models = $state<models[]>([]);
   key = 0;
@@ -27,7 +35,7 @@ class ModelStore {
           },
           res: (e) => {
             this.models = this.models.filter((e) => e.key != m.key);
-            rej(e);
+            res(e);
           },
         },
       };
@@ -48,11 +56,37 @@ class ModelStore {
           },
           res: (e) => {
             this.models = this.models.filter((e) => e.key != m.key);
-            rej(e);
+            res(e);
           },
         },
       };
 
+      this.models?.push(m);
+    });
+  }
+
+  createToast(props: ToastModel["props"]) {
+    return new Promise((res, rej) => {
+      let m: ToastModel = {
+        key: this.key++,
+        type: "toast",
+        props: {
+          ...props,
+          close: () => {
+            this.models = this.models.filter((e) => e.key != m.key);
+            res("closed");
+          },
+          res: (e) => {
+            this.models = this.models.filter((e) => e.key != m.key);
+            res(e);
+          },
+        },
+      };
+      let TimeoutFunc = () => {
+        this.models = this.models.filter((e) => e.key != m.key);
+        clearTimeout(timeout);
+      };
+      let timeout = setTimeout(TimeoutFunc, 60000);
       this.models?.push(m);
     });
   }

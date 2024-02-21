@@ -44,7 +44,7 @@
         on:click={() => {
           close?.();
         }}
-        class="h-5 w-5 rounded-full bg-gray-500 p-0.5 ms-auto text-white"
+        class="h-5 w-5 rounded-full text-gray-500 p-0.5 ms-auto hover:bg-gray-100"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"

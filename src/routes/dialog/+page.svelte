@@ -8,7 +8,7 @@
     Select,
     Radio,
   } from "$lib/input/createInput.svelte.js";
-  import { Models } from "$lib/stores/models.svelte.js";
+  import { Models } from "$lib/context/models.svelte.js";
   let _ = Obj({
     elms: {
       a: Text({ label: "qqqqqqqq" }),
@@ -87,6 +87,22 @@
             }),
           },
         }),
+      })
+        .then((e) => {
+          console.log(e, "wwwwwwwwwwww");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }}>Click</button
+  >
+
+  <button
+    class="px-3 py-1 rounded-lg bg-gray-600 text-white"
+    on:click={() => {
+      Models.createToast({
+        header: "asdfasdf",
+        helper: "It's ok to be a.......",
       })
         .then((e) => {
           console.log(e, "wwwwwwwwwwww");
