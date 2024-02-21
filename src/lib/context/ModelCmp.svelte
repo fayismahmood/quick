@@ -12,18 +12,21 @@
   import { receive, send } from "$lib/animate/sendRecive.js";
 
   //let {Models}=$props<{Models:ModelStore}>()
-  let dialogs = (quick.models || []).filter(
-    (e) => e.type == "dialog"
+  let dialogs = $derived(
+    (quick.models || []).filter((e) => e.type == "dialog")
   ) as DialogModel[];
-  let drawers = (quick.models || []).filter(
-    (e) => e.type == "drawer"
+
+  let drawers = $derived(
+    (quick.models || []).filter((e) => e.type == "drawer")
   ) as DrawerModel[];
-  let toasts = (quick.models || []).filter(
-    (e) => e.type == "toast"
+
+  let toasts = $derived(
+    (quick.models || []).filter((e) => e.type == "toast")
   ) as ToastModel[];
 </script>
 
 {#each dialogs as e}
+  <div>dia</div>
   <Dialog {...e.props} />
 {/each}
 {#each drawers as e}
