@@ -18,7 +18,7 @@ export type ToastModel = {
 
 type models = DialogModel | DrawerModel | ToastModel;
 
-class ModelStore {
+export class QuickStore {
   models = $state<models[]>([]);
   key = 0;
   constructor() {}
@@ -92,4 +92,4 @@ class ModelStore {
   }
 }
 
-export let Models = new ModelStore();
+export let quick = new QuickStore();
