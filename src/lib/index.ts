@@ -10,4 +10,5 @@ export {
   createInput,
 } from "./input/createInput.svelte.js";
 export { QuickStore, quick } from "./context/models.svelte.js";
-export * as Quicker from "./context/ModelCmp.svelte";
+import ModelCmp from "./context/ModelCmp.svelte";
+export let Quicker = ModelCmp;
