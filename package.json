@@ -1,6 +1,6 @@
 {
-  "name": "quick",
-  "version": "0.0.1",
+  "name": "svelte-quick",
+  "version": "0.0.15",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
